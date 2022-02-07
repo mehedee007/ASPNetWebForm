@@ -1,0 +1,29 @@
+if (cBoxAgree.Checked && txtBoxFullName.Text != "" && txtBoxEmail.Text != "" && 
+                txtBoxPhoneNumber.Text != "" && txtBoxRoundNo.Text != "")
+            {
+                con.Open();
+                cmd = new SqlCommand("INSERT INTO ReunionRegistration (FullName, EmailAddress, RoundNo, PhoneNumber, Message) Values (@fullname, @emailaddress, @roundno, @phonenumber, @message)", con);
+                cmd.Parameters.AddWithValue("@fullname", txtBoxFullName.Text);
+                cmd.Parameters.AddWithValue("@emailaddress", txtBoxEmail.Text);
+                cmd.Parameters.AddWithValue("@roundno", txtBoxRoundNo.Text);
+                cmd.Parameters.AddWithValue("@phonenumber", txtBoxPhoneNumber.Text);
+                cmd.Parameters.AddWithValue("@message", txtBoxMessage.Text);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                rtnMessage.Text = "Your record inserted successfully!!!!!!";
+
+
+                txtBoxFullName.Text = "";
+                txtBoxEmail.Text = "";
+                txtBoxRoundNo.Text = "";
+                txtBoxPhoneNumber.Text = "";
+                txtBoxMessage.Text = "";
+                cBoxAgree.Checked = false;
+                rtnMessage.Text = "";
+                emailSendSuccess.Text = "";
+            }
+            else
+            {
+                rtnMessage.Text = "Read all the condition and also check the checkbox!!!!!";
+            }

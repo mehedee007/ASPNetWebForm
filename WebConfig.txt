@@ -1,0 +1,7 @@
+<system.net>
+  <mailSettings>
+    <smtp>
+      <network host="smtp.gmail.com" port="587" userName="learnprogramwithfun@gmail.com" password="xx" enableSsl="true"/>
+    </smtp>
+  </mailSettings>
+</system.net>

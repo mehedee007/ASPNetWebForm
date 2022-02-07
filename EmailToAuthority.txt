@@ -1,0 +1,25 @@
+
+            var fromAddress = "learnprogramwithfun@gmail.com";
+            const string fromPassword = "abc";
+            var toAddress = "mehedee.cs@outlook.com";
+            string subject = "Reunion Program-2021";
+
+            string body = txtBoxFullName.Text + " is comming to the reunion program-2021.\n";
+            body += "His/her personal information is like as below-\n";
+            body += "Trainee Name : " + txtBoxFullName.Text + "\n";
+            body += "Email Address : " + txtBoxEmail.Text + "\n";
+            body += "Round Number : " + txtBoxRoundNo.Text + "\n";
+            body += "Phone Number : " + txtBoxPhoneNumber.Text + "\n";
+            body += "Message : " + txtBoxMessage.Text;
+            // smtp Settings
+            var smtp = new SmtpClient();
+            {
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                smtp.Timeout = 20000;
+            }
+            // Passing values to smtp object
+            smtp.Send(fromAddress, toAddress, subject, body);

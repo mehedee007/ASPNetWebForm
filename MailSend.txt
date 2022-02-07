@@ -1,0 +1,27 @@
+private void sendEmailToUser()
+        {
+            var fromAddress = "learnprogramwithfun@gmail.com";
+            const string fromPassword = "";
+            var toAddress = txtBoxEmail.Text.ToString();
+            string subject = "Reunion Program-2021";
+            string body = "Thank you " + txtBoxFullName.Text + " for your interest in participation on our reunion program. " + "\n";
+            body += "Looking forward to see you on the reunion program day." + "\n\n";
+            body += "============= Program Details =============" + "\n";
+            body += "Event Address : New Vision Information Technology (NVIT), 110 CDA Avenue, Nasirabad, (Opposite CTG Shopping Complex) Chittagong- 4000" + "\n";
+            body += "Event Date :  Saturday, 02 October 2021" + "\n";
+            body += "Event Start Time : Start from 02:00 PM onwards" + "\n";
+            body += "Please feel free to call me on (+8801747 193 694) or contact by (learnprogramwithfun@gmail.com), if you require any further information.";
+
+            // SMTP Settings
+            var smtp = new SmtpClient();
+            {
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                smtp.Timeout = 20000;
+            }
+            // Passing Values To SMTP Object
+            smtp.Send(fromAddress, toAddress, subject, body);
+        }
